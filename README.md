@@ -9,7 +9,7 @@
 
 ![Demo Overview](assets/overview.gif)
 
-*Autonomous environment cleanup with 4 objects — full scan, sort, and placement cycle*
+*Autonomous environment cleanup with 5 objects — full scan, sort, and placement cycle*
 
 ---
 
