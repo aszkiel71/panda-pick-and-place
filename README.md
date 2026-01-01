@@ -110,7 +110,7 @@ This eliminates redundant rotations and keeps the wrist joints within optimal li
 
 ---
 
-## Installation & Usage
+## Launch
 
 ### Windows
 ```bash
