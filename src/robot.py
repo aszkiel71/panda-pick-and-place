@@ -41,7 +41,9 @@ class PandaRobot:
         actual_pos = state[4]
         return actual_pos
 
-    def move_to(self, target_pos: Position, target_yaw: float = 0.5) -> None:
+    def move_to(
+        self, target_pos: Position, target_yaw: float = 0.5, speed: float = 2.0
+    ) -> None:
         orn = p.getQuaternionFromEuler([PI, 0, target_yaw])
         joint_poses = p.calculateInverseKinematics(
             self.robot_id,
@@ -61,16 +63,17 @@ class PandaRobot:
                 controlMode=p.POSITION_CONTROL,
                 targetPosition=joint_poses[i],
                 force=500,
+                maxVelocity=speed,
             )
 
-    def open_gripper(self) -> None:
+    def open_gripper(self, width=0.08) -> None:
         for i in self.gripper_indices:
             p.setJointMotorControl2(
-                self.robot_id, i, p.POSITION_CONTROL, targetPosition=0.04, force=100
+                self.robot_id, i, p.POSITION_CONTROL, targetPosition=width, force=500
             )
 
     def close_gripper(self) -> None:
         for i in self.gripper_indices:
             p.setJointMotorControl2(
-                self.robot_id, i, p.POSITION_CONTROL, targetPosition=0.02, force=500
+                self.robot_id, i, p.POSITION_CONTROL, targetPosition=0.02, force=1000
             )

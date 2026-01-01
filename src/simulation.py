@@ -23,6 +23,16 @@ class SimulationEnv:
         # floor
         p.loadURDF("plane.urdf")
 
+        """
+        cinema mode:
+
+        """
+
+        p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
+        p.configureDebugVisualizer(p.COV_ENABLE_RGB_BUFFER_PREVIEW, 0)
+        p.configureDebugVisualizer(p.COV_ENABLE_DEPTH_BUFFER_PREVIEW, 0)
+        p.configureDebugVisualizer(p.COV_ENABLE_SEGMENTATION_MARK_PREVIEW, 0)
+
         # robot
         self.robot_id = p.loadURDF(
             fileName="franka_panda/panda.urdf",
